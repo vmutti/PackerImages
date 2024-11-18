@@ -1,0 +1,8 @@
+{
+  "type": "qemu",
+  "output_directory":"{{user `output_image_path`}}",
+  "disk_size": "{{user `output_image_size`}}",
+  "format": "qcow2",
+  "accelerator": "kvm",
+  "memory":"{{user `memory`}}"
+}

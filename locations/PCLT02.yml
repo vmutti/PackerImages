@@ -1,0 +1,24 @@
+vars:
+  ssh_port: "22"
+  ssh_private_key_path: /home/vmutti/.ssh/vagrant
+  username: ansible
+  arch: amd64
+  boot_device: /dev/sda
+  clipboard_mode: bidirectional
+  cpus: "2"
+  headless: "true"
+  memory: "4096"
+  size: "81920"
+  usb: "off"
+  usbehci: "off" 
+  version: "1.0"
+  vrde: "off"
+
+images:
+  - name: worchestation-debian-base.box
+    vars:
+      box_version: "1.0"
+    layers:
+      - platforms/virtualbox
+      - distros/debian
+      - packagers/vagrant

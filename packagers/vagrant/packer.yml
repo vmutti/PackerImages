@@ -1,0 +1,3 @@
+post-processors:
+  - type: "vagrant"
+    output: "{{user `target`}}"

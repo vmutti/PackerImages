@@ -1,0 +1,6 @@
+distro: debian
+distro_tag: netinst
+distro_version: "12.8.0"
+guest_os_type: Debian_64
+iso_checksum_type: sha512
+iso_checksum: f4f7de1665cdcd00b2e526da6876f3e06a37da3549e9f880602f64407f602983a571c142eb0de0eacfc9c1d0f534e9339cdce04eb9daddc6ddfa8cf34853beed
