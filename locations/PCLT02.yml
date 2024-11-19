@@ -15,10 +15,26 @@ vars:
   vrde: "off"
 
 images:
-  - name: worchestation-debian-base.box
+  - name: debian-base-virtualbox
     vars:
       box_version: "1.0"
     layers:
       - platforms/virtualbox
+      - platforms/virtualbox-iso
       - distros/debian
       - packagers/vagrant
+    extensions:
+      - ovf
+      - box
+  - name: worchestation-virtualbox
+    depends: debian-base-virtualbox
+    vars:
+      box_version: "1.0"
+    layers:
+      - platforms/virtualbox
+      - platforms/virtualbox-ovf
+      - profiles/worchestation
+      - packagers/vagrant
+    extensions:
+      - ovf
+      - box

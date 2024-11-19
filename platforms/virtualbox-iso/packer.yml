@@ -1,0 +1,8 @@
+builder:
+  http_directory: "{{user `http_path`}}"
+  iso_checksum: "{{user `iso_checksum_type`}}:{{user `iso_checksum`}}"
+  ssh_timeout: "2h"
+  guest_os_type: "{{user `guest_os_type`}}"
+  boot_wait: "5s"
+  type: "virtualbox-iso"
+  disk_size: "{{user `size`}}"

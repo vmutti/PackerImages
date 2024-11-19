@@ -1,3 +1,4 @@
 post-processors:
   - type: "vagrant"
-    output: "{{user `target`}}"
+    output: "{{user `build_dir`}}/{{user `target`}}.box"
+    keep_input_artifact: true

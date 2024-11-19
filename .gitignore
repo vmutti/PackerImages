@@ -5,5 +5,5 @@
 config.log
 .sconf_temp
 /builds
-/output-virtualbox-iso
+/output-*
 /packer_cache
