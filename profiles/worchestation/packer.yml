@@ -1,0 +1,33 @@
+provisioners:
+  - type: ansible
+    playbook_file: "{{user `collections_dir`}}/collections/ansible_collections/makinj/worchestation/playbooks/provision.yaml"
+    user: "{{user `username`}}"
+    host_alias: "{{user `location`}}_{{user `stage`}}_{{user `target`}}"
+    inventory_directory: "{{user `build_dir`}}"
+    extra_arguments:
+      - "-e"
+      - "target_hosts={{user `location`}}_{{user `stage`}}_{{user `target`}}"
+      - "-i" 
+      - "{{user `worchestation_config_dir`}}/inventory/"
+      - "-i"
+      - "{{user `worchestation_config_dir`}}/locations/{{user `location`}}/{{user `stage`}}/inventory/"
+    inventory_file_template: |
+      {{user `location`}}_{{user `stage`}}_host_type_example:
+        hosts:
+          {{.HostAlias}}:
+            ansible_host: {{.Host}}
+            ansible_port: {{.Port}}
+            ansible_user: {{.User}}
+      worchestation:
+        hosts:
+          {{.HostAlias}}:
+      running:
+        hosts:
+          {{.HostAlias}}:
+      {{user `location`}}_{{user `stage`}}_vagrant_virtualbox_guest:
+        hosts:
+          {{.HostAlias}}:          
+    ansible_env_vars:
+      - "ANSIBLE_CONFIG={{user `worchestation_config_dir`}}/locations/{{user `location`}}/{{user `stage`}}/ansible.cfg"
+    use_proxy: false
+

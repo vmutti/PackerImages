@@ -6,3 +6,6 @@ builder:
   boot_wait: "5s"
   type: "virtualbox-iso"
   disk_size: "{{user `size`}}"
+provisioners:
+  - type: shell
+    script: ./platforms/virtualbox-iso/provision.sh

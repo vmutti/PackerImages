@@ -13,6 +13,8 @@ vars:
   usbehci: "off" 
   version: "1.0"
   vrde: "off"
+  collections_dir: /home/vmutti/.ansible-dev
+  worchestation_config_dir: /home/vmutti/WorchestationConfig
 
 images:
   - name: debian-base-virtualbox
@@ -24,7 +26,7 @@ images:
       - distros/debian
       - packagers/vagrant
     extensions:
-      - ovf
+      - virtualbox/output.ovf
       - box
   - name: worchestation-virtualbox
     depends: debian-base-virtualbox
@@ -36,5 +38,5 @@ images:
       - profiles/worchestation
       - packagers/vagrant
     extensions:
-      - ovf
+      - virtualbox/output.ovf
       - box
