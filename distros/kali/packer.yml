@@ -21,7 +21,7 @@ builder:
     - "<enter><wait>"
   http_directory: "{{ user `http_path` }}"
   iso_urls:
-    - "https://cdimage.debian.org/debian-cd/{{user `distro_version`}}/{{user `arch`}}/{{user `distro_media_type`}}/debian-{{user `distro_version`}}-{{user `arch`}}-{{user `distro_tag`}}.iso"
+    - "https://cdimage.kali.org/kali-{{user `distro_version`}}/kali-linux-{{user `distro_version`}}-{{user `distro_tag`}}-{{user `arch`}}.iso"
   iso_checksum: "{{user `iso_checksum_type`}}:{{user `iso_checksum`}}"
   ssh_username: "{{user `username`}}"
   ssh_private_key_file: "{{user `ssh_private_key_path`}}"

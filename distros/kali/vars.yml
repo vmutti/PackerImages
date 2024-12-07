@@ -1,0 +1,6 @@
+distro: kali
+distro_version: "2024.3"
+distro_tag: "installer"
+guest_os_type: Debian_64
+iso_checksum_type: sha256
+iso_checksum: 2ba1abf570ea0685ca4a97dd9c83a65670ca93043ef951f0cd7bbff914fa724a

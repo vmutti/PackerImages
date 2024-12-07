@@ -17,13 +17,25 @@ vars:
   worchestation_config_dir: /home/vmutti/WorchestationConfig
 
 images:
-  - name: worchestation-virtualbox
+  - name: debian-base-virtualbox
     vars:
       box_version: "1.0"
     layers:
       - platforms/virtualbox
       - platforms/virtualbox-iso
       - distros/debian
+      - packagers/vagrant
+    extensions:
+      - virtualbox/output.ovf
+      - box
+  - name: worchestation-virtualbox
+    depends: debian-base-virtualbox
+    vars:
+      box_version: "1.0"
+      worchestation_group_suffix: worchestation_vagrant_debian_guest
+    layers:
+      - platforms/virtualbox
+      - platforms/virtualbox-ovf
       - profiles/worchestation
       - packagers/vagrant
     extensions:

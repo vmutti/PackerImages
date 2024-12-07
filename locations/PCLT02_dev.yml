@@ -32,6 +32,7 @@ images:
     depends: debian-base-virtualbox
     vars:
       box_version: "1.0"
+      worchestation_group_suffix: worchestation_vagrant_debian_guest
     layers:
       - platforms/virtualbox
       - platforms/virtualbox-ovf
@@ -40,3 +41,27 @@ images:
     extensions:
       - virtualbox/output.ovf
       - box
+  # - name: kali-base-virtualbox
+  #   vars:
+  #     box_version: "1.0"
+  #     worchestation_group_suffix: worchestation_vagrant_kali_guest
+  #   layers:
+  #     - platforms/virtualbox
+  #     - platforms/virtualbox-iso
+  #     - distros/kali
+  #     - packagers/vagrant
+  #   extensions:
+  #     - virtualbox/output.ovf
+  #     - box
+  # - name: worchestation-kali-virtualbox
+  #   depends: kali-base-virtualbox
+  #   vars:
+  #     box_version: "1.0"
+  #   layers:
+  #     - platforms/virtualbox
+  #     - platforms/virtualbox-ovf
+  #     - profiles/worchestation
+  #     - packagers/vagrant
+  #   extensions:
+  #     - virtualbox/output.ovf
+  #     - box
