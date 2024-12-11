@@ -1,6 +1,6 @@
 vars:
   ssh_port: "22"
-  ssh_private_key_path: /home/vmutti/.ssh/vagrant
+  ssh_private_key_path: /home/vmutti/.ssh/vagrant-prod
   username: ansible
   arch: amd64
   boot_device: /dev/sda

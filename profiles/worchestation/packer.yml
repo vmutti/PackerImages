@@ -1,6 +1,6 @@
 provisioners:
   - type: ansible
-    playbook_file: "{{user `collections_dir`}}/collections/ansible_collections/makinj/worchestation/playbooks/provision.yaml"
+    playbook_file: "../.ansible/collections/ansible_collections/makinj/worchestation/playbooks/provision.yml"
     user: "{{user `username`}}"
     host_alias: "{{user `location`}}_{{user `stage`}}_{{user `target`}}"
     inventory_directory: "{{user `build_dir`}}"
@@ -8,9 +8,9 @@ provisioners:
       - "-e"
       - "target_hosts={{user `location`}}_{{user `stage`}}_{{user `target`}}"
       - "-i" 
-      - "{{user `worchestation_config_dir`}}/inventory/"
+      - "../AnsibleInventoryGlobal/inventory/"
       - "-i"
-      - "{{user `worchestation_config_dir`}}/locations/{{user `location`}}/{{user `stage`}}/inventory/"
+      - "../inventory/"
     inventory_file_template: |
       {{user `location`}}_{{user `stage`}}_{{user `worchestation_group_suffix`}}:
         hosts:
@@ -19,6 +19,6 @@ provisioners:
             ansible_port: {{.Port}}
             ansible_user: {{.User}}   
     ansible_env_vars:
-      - "ANSIBLE_CONFIG={{user `worchestation_config_dir`}}/locations/{{user `location`}}/{{user `stage`}}/ansible.cfg"
+      - "ANSIBLE_CONFIG=../ansible.cfg"
     use_proxy: false
 
