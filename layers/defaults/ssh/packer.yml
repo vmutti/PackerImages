@@ -1,0 +1,11 @@
+locals:
+  ssh_username: ansible
+  ssh_timeout: 2h
+  ssh_port: 22
+  ssh_public_key_path: "${local.ssh_private_key_path}.pub"
+  ssh_public_key: "${file(local.ssh_public_key_path)}"
+builder:
+  ssh_port: "${local.ssh_port}"
+  ssh_private_key_file: "${local.ssh_private_key_path}"
+  ssh_username: "${local.ssh_username}"
+  ssh_timeout: "${local.ssh_timeout}"

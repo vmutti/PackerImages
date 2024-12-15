@@ -1,0 +1,44 @@
+2024/12/15 01:32:01 [INFO] Packer version: 1.12.0-dev [go1.22.9 linux amd64]
+2024/12/15 01:32:01 [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2024/12/15 01:32:01 [INFO] PACKER_CONFIG env var set; attempting to open config file: /home/vmutti/.packerconfig
+2024/12/15 01:32:01 [WARN] Config file doesn't exist: /home/vmutti/.packerconfig
+2024/12/15 01:32:01 [INFO] Setting cache directory: /home/vmutti/.cache/packer
+2024/12/15 01:32:01 [TRACE] listing potential installations for <nil> that match "". plugingetter.ListInstallationsOptions{PluginDirectory:"/home/vmutti/.config/packer/plugins", BinaryInstallationOptions:plugingetter.BinaryInstallationOptions{APIVersionMajor:"5", APIVersionMinor:"0", OS:"linux", ARCH:"amd64", Ext:"", Checksummers:[]plugingetter.Checksummer{plugingetter.Checksummer{Type:"sha256", Hash:(*sha256.digest)(0xc000643580)}}, ReleasesOnly:false}}
+2024/12/15 01:32:01 [INFO] found external [-packer-default-plugin-name-] builders from vagrant plugin
+2024/12/15 01:32:01 [INFO] found external [-packer-default-plugin-name- cloud] post-processors from vagrant plugin
+2024/12/15 01:32:01 [INFO] found external [iso ovf vm] builders from virtualbox plugin
+2024/12/15 01:32:01 found external [-packer-default-plugin-name- local] provisioner from ansible plugin
+2024/12/15 01:32:01 [TRACE] validateValue: not active for build_directory, so skipping
+2024/12/15 01:32:01 [TRACE] validateValue: not active for target, so skipping
+2024/12/15 01:32:01 [TRACE] validateValue: not active for boot_device, so skipping
+2024/12/15 01:32:01 [TRACE] validateValue: not active for disk_size, so skipping
+2024/12/15 01:32:01 waiting for all plugin processes to complete...
+panic: interface conversion: interface is nil, not dag.Vertex
+
+goroutine 1 [running]:
+github.com/hashicorp/packer/internal/dag.stronglyConnected(0xc00089e8f8, 0xc000778360, {0x1b0c480, 0xc000665130})
+	github.com/hashicorp/packer/internal/dag/tarjan.go:31 +0x4fb
+github.com/hashicorp/packer/internal/dag.StronglyConnected(0xc000778360)
+	github.com/hashicorp/packer/internal/dag/tarjan.go:19 +0x267
+github.com/hashicorp/packer/internal/dag.(*AcyclicGraph).Cycles(0x10?)
+	github.com/hashicorp/packer/internal/dag/dag.go:62 +0x19
+github.com/hashicorp/packer/internal/dag.(*AcyclicGraph).Validate(0xc000778360)
+	github.com/hashicorp/packer/internal/dag/dag.go:34 +0x2a
+github.com/hashicorp/packer/hcl2template.(*PackerConfig).buildPrereqsDAG(0xc000469180)
+	github.com/hashicorp/packer/hcl2template/parser.go:438 +0x732
+github.com/hashicorp/packer/hcl2template.(*PackerConfig).evaluateBuildPrereqs(0xc000469180, 0x0)
+	github.com/hashicorp/packer/hcl2template/parser.go:451 +0x69
+github.com/hashicorp/packer/hcl2template.(*PackerConfig).Initialize(0xc000469180, {0x20?, 0xf0?})
+	github.com/hashicorp/packer/hcl2template/parser.go:516 +0x32e
+github.com/hashicorp/packer/command.(*BuildCommand).RunContext(0xc00050d590, {0x241f7a0, 0xc0000fa460}, 0xc00048f180)
+	github.com/hashicorp/packer/command/build.go:105 +0xed
+github.com/hashicorp/packer/command.(*BuildCommand).Run(0xc00050d590, {0xc00003e200, 0x4, 0x4})
+	github.com/hashicorp/packer/command/build.go:45 +0xbb
+github.com/mitchellh/cli.(*CLI).Run(0xc000468f00)
+	github.com/mitchellh/cli@v1.1.5/cli.go:262 +0x5b8
+main.wrappedMain()
+	github.com/hashicorp/packer/main.go:274 +0xeac
+main.realMain()
+	github.com/hashicorp/packer/main.go:51 +0xd5
+main.main()
+	github.com/hashicorp/packer/main.go:37 +0x13

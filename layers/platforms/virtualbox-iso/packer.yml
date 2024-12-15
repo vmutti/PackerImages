@@ -1,0 +1,15 @@
+type: "virtualbox-iso"
+layers:
+  - defaults/initial
+  - platforms/virtualbox
+
+variables:
+  disk_size:
+    type: number
+    default: 80000
+
+builder:
+  iso_url: "${local.iso_url}"
+  iso_checksum: "${local.iso_checksum}"
+  guest_os_type: "${local.guest_os_type}"
+  disk_size: "${var.disk_size}"

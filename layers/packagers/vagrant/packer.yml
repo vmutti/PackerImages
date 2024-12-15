@@ -1,0 +1,4 @@
+post-processors:
+  - vagrant:
+      output: "{{user `build_dir`}}/{{user `target`}}.box"
+      keep_input_artifact: true

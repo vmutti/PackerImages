@@ -1,0 +1,24 @@
+provisioners:
+  - ansible:
+      playbook_file: "../.ansible/collections/ansible_collections/makinj/worchestation/playbooks/provision.yml"
+      user: "${local.ssh_username}"
+      host_alias: "${local.location}_${local.stage}_${local.target}"
+      inventory_directory: "${local.build_directory}"
+      extra_arguments:
+        - "-e"
+        - "target_hosts=${local.location}_${local.stage}_${local.target}"
+        - "-i" 
+        - "../AnsibleInventoryGlobal/inventory/"
+        - "-i"
+        - "../inventory/"
+      inventory_file_template: |
+        ${local.location}_${local.stage}_${local.worchestation_group_suffix}:
+          hosts:
+            {{.HostAlias}}:
+              ansible_host: {{.Host}}
+              ansible_port: {{.Port}}
+              ansible_user: {{.User}}   
+      ansible_env_vars:
+        - "ANSIBLE_CONFIG=../ansible.cfg"
+      use_proxy: false
+
