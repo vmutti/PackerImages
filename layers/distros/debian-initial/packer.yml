@@ -1,0 +1,41 @@
+layers:
+  - distros/debian
+  - defaults/initial
+
+locals:
+  distro: debian
+  distro_version: "12.8.0"
+  distro_tag: DVD-1
+  distro_media_type: "iso-dvd"
+  iso_url_dir:
+    "https://cdimage.${local.distro}.org/${local.distro}-cd/${local.distro_version}/${local.arch}/${local.distro_media_type}"
+  iso_url:
+    "${local.iso_url_dir}/${local.distro}-${local.distro_version}-${local.arch}-${local.distro_tag}.iso" 
+  iso_checksum: "file:${local.iso_url_dir}/SHA256SUMS"
+  guest_os_type: Debian12_64
+builder:
+  boot_command:
+    - "<esc><wait>"
+    - "auto <wait>"
+    - "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>"
+    - "netcfg/get_hostname={{ .Name }} <wait>"
+    - "packer_url=http://{{ .HTTPIP }}:{{ .HTTPPort }} <wait>"
+    - "packer_username=${local.ssh_username} <wait>"
+    - "<enter><wait>"
+    # - "install <wait>"
+    # - "debian-installer=en_US.UTF-8 <wait>"
+    # - "auto-install/enable=true <wait>"
+    # - "locale=en_US.UTF-8 <wait>"
+    # - "kbd-chooser/method=us <wait>"
+    # - "keyboard-configuration/xkb-keymap=us <wait>"
+    # # - "fb=false <wait>"
+    # - "netcfg/get_domain=${local.domain} <wait>"
+    # - "debconf/frontend=noninteractive <wait>"
+    # - "console-setup/ask_detect=false <wait>"
+    # - "console-keymaps-at/keymap=us <wait>"
+
+
+  http_content:
+    /preseed.cfg: "${templatefile(\"../../../../layers/distros/debian-initial/http/preseed.cfg\",local)}"
+    /late-command.sh: "${file(\"../../../../layers/distros/debian-initial/http/late-command.sh\")}"
+    /authorized_keys: "${local.ssh_public_key}"

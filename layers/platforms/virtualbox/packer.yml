@@ -1,0 +1,31 @@
+layers:
+  - defaults/common
+
+locals:
+  headless: true
+  cpus: 2
+  memory: 4000
+  usb: false
+  usbehci: false
+  vrde: false
+  clipboard_mode: disabled
+
+builder:
+  vm_name: "${local.name}"
+  headless: "${local.headless}"
+  output_directory: "${local.build_directory}/${local.target}/virtualbox"
+  output_filename: "output"
+  vboxmanage:
+    - - "modifyvm"
+      - "{{.Name}}"
+      - "--usbehci"
+      - "${local.usbehci ? \"on\" : \"off\"}"
+    - - "modifyvm"
+      - "{{.Name}}"
+      - "--clipboard-mode"
+      - "${local.clipboard_mode}"
+    - - "modifyvm"
+      - "{{.Name}}"
+      - "--vrde"
+      - "${local.vrde ? \"on\" : \"off\"}"
+  guest_additions_url: "${local.guest_additions_url}"

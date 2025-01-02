@@ -1,0 +1,7 @@
+type: "virtualbox-ovf"
+layers:
+  - defaults/dependent
+  - platforms/virtualbox
+builder:
+  checksum: "none"
+  source_path: "${var.build_directory}/${var.source}/virtualbox/output.ovf"

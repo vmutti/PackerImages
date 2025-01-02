@@ -1,0 +1,4 @@
+post-processors:
+  - vagrant:
+      output: "${local.build_directory}/${local.target}/vagrant.box"
+      keep_input_artifact: true

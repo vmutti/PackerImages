@@ -1,0 +1,16 @@
+variables:
+  build_directory:
+    type: string
+  target:
+    type: string
+  stage:
+    type: string
+  location:
+    type: string
+
+locals:
+  stage: "${var.stage}"
+  location: "${var.location}"
+  target: "${var.target}"
+  name: "${var.target}-${uuidv4()}"
+  build_directory: "${var.build_directory}"

@@ -1,4 +1,0 @@
-builder:
-  type: "virtualbox-ovf"
-  checksum: "none"
-  source_path: "{{user `source_path`}}.virtualbox/output.ovf"
