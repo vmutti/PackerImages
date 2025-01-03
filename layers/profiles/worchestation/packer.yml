@@ -1,6 +1,6 @@
 provisioners:
   - ansible:
-      playbook_file: "../.ansible/collections/ansible_collections/makinj/worchestation/playbooks/provision.yml"
+      playbook_file: "../.ansible/collections/ansible_collections/vmutti/worchestation/playbooks/provision.yml"
       user: "${local.ssh_username}"
       host_alias: "${local.location}_${local.stage}_${local.target}"
       inventory_directory: "${local.build_directory}"
