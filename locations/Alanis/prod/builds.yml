@@ -1,6 +1,6 @@
 locals:
   ssh_username: ansible
-  ssh_private_key_path: /home/vmutti/.ssh/vagrant-dev
+  ssh_private_key_path: /home/vmutti/.ssh/vagrant-prod
   domain: "${local.stage}.${local.location}.local.vmutti.com"
 groups:
   virtualbox:
