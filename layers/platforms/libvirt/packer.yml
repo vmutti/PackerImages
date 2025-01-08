@@ -1,0 +1,15 @@
+type: "qemu"
+layers:
+  - defaults/common
+
+locals:
+  headless: true
+  cpus: 2
+  memory: 4000
+
+builder:
+  headless: "${local.headless}"
+  output_directory: "${local.build_directory}/${local.target}/libvirt"
+  format: qcow2
+  vm_name: "${var.target}"
+  accelerator: kvm

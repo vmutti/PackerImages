@@ -10,5 +10,4 @@ mkdir -p "/home/$packer_username/.ssh";
 
 # echo "$packer_ssh_pubkey" >> "/home/$packer_username/.ssh/authorized_keys";
 wget "$packer_url/authorized_keys" -O "/home/$packer_username/.ssh/authorized_keys"
-chown "$packer_username:$pa
-cker_username" "/home/$packer_username/.ssh"
+chown "$packer_username:$packer_username" "/home/$packer_username/.ssh"

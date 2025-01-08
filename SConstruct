@@ -218,7 +218,9 @@ def BuildImages(env):
 # myenv['ENV']['PATH']+=":/mnt/c/WINDOWS/system32/"
 # myenv['ENV']['PATH']+=":/mnt/c/WINDOWS/System32/WindowsPowershell/v1.0/"
 myenv.AddMethod(BuildImages)
-
+myenv['ENV']['HOME']= os.environ['HOME']
+myenv['ENV']['USER']= os.environ['USER']
+myenv['ENV']['LOGNAME']= os.environ['LOGNAME']
 myenv.BuildImages()
 
 # rebuild = GetOption('rebuild')

@@ -1,0 +1,68 @@
+locals:
+  ssh_username: ansible
+  ssh_private_key_path: /home/vmutti/.ssh/vagrant-dev
+  domain: "${local.stage}.${local.location}.local.vmutti.com"
+groups:
+  virtualbox:
+    locals:
+      clipboard_mode: bidirectional
+      guest_additions_url: /usr/share/virtualbox/VBoxGuestAdditions.iso
+  worchestation:
+    locals:
+      environments_dir: /home/vmutti/projects/AnsibleEnvironments
+images:
+  debian-virtualbox:
+    groups:
+      - virtualbox
+    locals:
+      arch: amd64
+      box_version: "1.0"
+      disk_size: 81920
+    layers:
+      - platforms/virtualbox-iso
+      - distros/debian-initial
+      - packagers/vagrant
+    extensions:
+      - /virtualbox/output.ovf
+      - /vagrant.box
+
+  worchestation-debian-virtualbox:
+    depends: debian-virtualbox
+    groups:
+      - virtualbox
+      - worchestation
+    locals:
+      box_version: "1.0"
+      worchestation_group_suffix: worchestation_profile_virtualbox_guest_debian
+    layers:
+      - platforms/virtualbox-ovf
+      - distros/debian
+      - profiles/worchestation
+      - packagers/vagrant
+    extensions:
+      - /virtualbox/output.ovf
+      - /vagrant.box
+  # - name: kali-base-virtualbox
+  #   vars:
+  #     box_version: "1.0"
+  #     worchestation_group_suffix: worchestation_vagrant_kali_guest
+  #   layers:
+  #     - platforms/virtualbox
+  #     - platforms/virtualbox-iso
+  #     - distros/kali
+  #     - packagers/vagrant
+  #   extensions:
+  #     - virtualbox/output.ovf
+  #     - box
+  # - name: worchestation-kali-virtualbox
+  #   depends: kali-base-virtualbox
+  #   vars:
+  #     box_version: "1.0"
+  #   layers:
+  #     - platforms/virtualbox
+  #     - platforms/virtualbox-ovf
+  #     - profiles/worchestation
+  #     - packagers/vagrant
+  #   extensions:
+  #     - virtualbox/output.ovf
+  #     - box

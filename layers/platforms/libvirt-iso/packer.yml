@@ -1,7 +1,6 @@
-type: "virtualbox-iso"
 layers:
   - defaults/initial
-  - platforms/virtualbox
+  - platforms/libvirt
 
 variables:
   disk_size:
@@ -9,11 +8,12 @@ variables:
     default: 80000
 
 locals:
-  boot_device: /dev/sda
+  boot_device: /dev/vda
+
+
 builder:
   cpus: "${local.cpus}"
   memory: "${local.memory}"
   iso_url: "${local.iso_url}"
   iso_checksum: "${local.iso_checksum}"
-  guest_os_type: "${local.guest_os_type}"
   disk_size: "${var.disk_size}"
