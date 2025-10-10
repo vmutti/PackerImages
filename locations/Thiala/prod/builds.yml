@@ -75,3 +75,4 @@ images:
     extensions:
       - /virtualbox/output.ovf
       - /vagrant.box
+

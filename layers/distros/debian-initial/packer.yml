@@ -4,7 +4,7 @@ layers:
 
 locals:
   distro: debian
-  distro_version: "12.9.0"
+  distro_version: "13.1.0"
   distro_tag: DVD-1
   distro_media_type: "iso-dvd"
   iso_url_dir:

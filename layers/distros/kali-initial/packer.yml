@@ -4,7 +4,7 @@ layers:
 
 locals:
   distro: kali
-  distro_version: "2024.4"
+  distro_version: "2025.3"
   iso_url_dir:
     "https://cdimage.${local.distro}.org/${local.distro}-${local.distro_version}"
   iso_url:
