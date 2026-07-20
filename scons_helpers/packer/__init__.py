@@ -226,6 +226,16 @@ def _generate_packer_build(target, source, env, for_signature):
     return f'packer build -force -var-file {source[1]} {source[0]}'
 
 
+def _layer_http_dirs(image_name):
+    """Absolute paths of `http/` directories among the layers this image resolves, in order."""
+    dirs = []
+    for layer_name in LAYERS.resolve(IMAGES[image_name].get('layers') or []):
+        http_dir = os.path.join(os.path.dirname(LAYERS[layer_name]['_source']), 'http')
+        if os.path.isdir(http_dir):
+            dirs.append(http_dir)
+    return dirs
+
+
 def _build_one_image(env, image_name):
     image_env = env.Clone()
     image_env['IMAGE_NAME'] = image_name
@@ -238,9 +248,15 @@ def _build_one_image(env, image_name):
 
     config_node = image_env.PackerImageConfig()
     vars_node = image_env.PackerImageVars()
+    http_nodes = [
+        image_env.Install(base + '/http', os.path.join(http_dir, fname))
+        for http_dir in _layer_http_dirs(image_name)
+        for fname in sorted(os.listdir(http_dir))
+    ]
     build_node = image_env.PackerBuild()
     image_env.Depends(build_node, config_node)
     image_env.Depends(build_node, vars_node)
+    image_env.Depends(build_node, http_nodes)
     return build_node
 
 

@@ -26,8 +26,8 @@ PackerLayer(
             '<enter><wait>',
         ],
         'http_content': {
-            '/preseed.cfg': '${templatefile("../../../../layers/distros/kali-initial/http/preseed.cfg",local)}',
-            '/late-command.sh': '${file("../../../../layers/distros/kali-initial/http/late-command.sh")}',
+            '/preseed.cfg': '${templatefile("http/preseed.cfg",local)}',
+            '/late-command.sh': '${file("http/late-command.sh")}',
             '/authorized_keys': '${local.ssh_public_key}',
         },
     },
