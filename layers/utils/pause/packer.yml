@@ -1,0 +1,3 @@
+provisioners:
+  - breakpoint:
+      note: "Pausing provisioning"
