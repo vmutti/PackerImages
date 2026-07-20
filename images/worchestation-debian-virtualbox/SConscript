@@ -1,0 +1,16 @@
+Import('env', 'PackerImage')
+
+PackerImage(
+    depends='debian-virtualbox',
+    groups=['virtualbox', 'worchestation'],
+    layers=[
+        'platforms/virtualbox-ovf',
+        'distros/debian',
+        'profiles/worchestation',
+        'packagers/vagrant',
+    ],
+    extensions=[
+        '/virtualbox/output.ovf',
+        '/vagrant.box',
+    ],
+)

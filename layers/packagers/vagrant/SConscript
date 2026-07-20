@@ -1,0 +1,15 @@
+Import('env', 'PackerLayer')
+
+PackerLayer(
+    locals={
+        'box_version': '1.0',
+    },
+    post_processors=[
+        {
+            'vagrant': {
+                'output': '${local.build_directory}/${local.target}/vagrant.box',
+                'keep_input_artifact': True,
+            },
+        },
+    ],
+)

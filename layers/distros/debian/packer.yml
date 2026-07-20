@@ -1,5 +1,0 @@
-layers:
-  - defaults/ssh
-builder:
-  shutdown_command: "sudo shutdown -P now"
-

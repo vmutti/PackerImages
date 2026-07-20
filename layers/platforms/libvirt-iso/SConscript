@@ -1,0 +1,18 @@
+Import('env', 'PackerLayer')
+
+PackerLayer(
+    uses=['defaults/initial', 'platforms/libvirt'],
+    variables={
+        'disk_size': {'type': 'number', 'default': 80000},
+    },
+    locals={
+        'boot_device': '/dev/vda',
+    },
+    builder={
+        'cpus': '${local.cpus}',
+        'memory': '${local.memory}',
+        'iso_url': '${local.iso_url}',
+        'iso_checksum': '${local.iso_checksum}',
+        'disk_size': '${var.disk_size}',
+    },
+)

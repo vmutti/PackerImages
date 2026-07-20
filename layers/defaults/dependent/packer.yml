@@ -1,5 +1,0 @@
-layers:
-  - defaults/common
-variables:
-  source:
-    type: string

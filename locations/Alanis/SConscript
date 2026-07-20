@@ -1,0 +1,19 @@
+Import('env', 'PackerLocation')
+
+PackerLocation(
+    locals={
+        'packager': 'vagrant',
+        'guest_additions_url': '/mnt/c/Program Files/Oracle/Virtualbox/VBoxGuestAdditions.iso',
+    },
+    # Alanis's dev environment mounts the AnsibleEnvironments checkout at a
+    # different path than every other location/environment combination.
+    locals_by_environment={
+        'dev': {
+            'environments_dir': '/home/vmutti/AnsibleEnvironments',
+        },
+    },
+    images=[
+        'debian-virtualbox',
+        'worchestation-debian-virtualbox',
+    ],
+)

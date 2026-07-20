@@ -1,0 +1,11 @@
+Import('env', 'PackerLayer')
+
+PackerLayer(
+    uses=['defaults/dependent', 'platforms/libvirt'],
+    builder={
+        'iso_url': '${var.build_directory}/${var.source}/libvirt/${var.source}',
+        'iso_checksum': 'none',
+        'disk_image': True,
+        'skip_resize_disk': True,
+    },
+)

@@ -1,0 +1,16 @@
+Import('env', 'PackerImage')
+
+PackerImage(
+    depends='kali-virtualbox',
+    groups=['virtualbox', 'worchestation'],
+    layers=[
+        'platforms/virtualbox-ovf',
+        'distros/kali',
+        'profiles/worchestation',
+        'packagers/vagrant',
+    ],
+    extensions=[
+        '/virtualbox/output.ovf',
+        '/vagrant.box',
+    ],
+)

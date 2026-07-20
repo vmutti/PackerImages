@@ -1,0 +1,14 @@
+Import('env', 'PackerLocation')
+
+PackerLocation(
+    locals={
+        'packager': 'virtualbox',
+        'guest_additions_url': '/usr/share/virtualbox/VBoxGuestAdditions.iso',
+    },
+    images=[
+        'debian-virtualbox',
+        'worchestation-debian-virtualbox',
+        'kali-virtualbox',
+        'worchestation-kali-virtualbox',
+    ],
+)

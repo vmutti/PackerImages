@@ -1,0 +1,7 @@
+Import('env', 'PackerGroup')
+
+PackerGroup(
+    locals={
+        'clipboard_mode': 'bidirectional',
+    },
+)

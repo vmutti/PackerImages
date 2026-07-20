@@ -1,0 +1,14 @@
+Import('env', 'PackerImage')
+
+PackerImage(
+    groups=['virtualbox'],
+    layers=[
+        'platforms/virtualbox-iso',
+        'distros/debian-initial',
+        'packagers/vagrant',
+    ],
+    extensions=[
+        '/virtualbox/output.ovf',
+        '/vagrant.box',
+    ],
+)

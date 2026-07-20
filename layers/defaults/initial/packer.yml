@@ -1,6 +1,0 @@
-layers:
-  - defaults/common
-variables:
-  boot_device:
-    type: string
-    default: /dev/sda

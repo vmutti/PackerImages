@@ -1,0 +1,8 @@
+Import('env', 'PackerLayer')
+
+PackerLayer(
+    uses=['defaults/common'],
+    variables={
+        'source': {'type': 'string'},
+    },
+)

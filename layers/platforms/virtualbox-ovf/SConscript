@@ -1,0 +1,10 @@
+Import('env', 'PackerLayer')
+
+PackerLayer(
+    type='virtualbox-ovf',
+    uses=['defaults/dependent', 'platforms/virtualbox'],
+    builder={
+        'checksum': 'none',
+        'source_path': '${var.build_directory}/${var.source}/virtualbox/output.ovf',
+    },
+)

@@ -1,0 +1,11 @@
+Import('env', 'PackerLayer')
+
+PackerLayer(
+    uses=['defaults/ssh'],
+    locals={
+        'distro': 'kali',
+    },
+    builder={
+        'shutdown_command': 'sudo shutdown -P now',
+    },
+)
