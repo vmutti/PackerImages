@@ -2,6 +2,7 @@ Import('env', 'PackerEnvironment')
 
 PackerEnvironment(
     locals={
-        'ssh_private_key_path': '/home/vmutti/.ssh/vagrant-prod',
+        # Placeholder — replace with the real public key for the prod SSH agent identity.
+        'ssh_public_key': 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEY45LdO8CinhYjoTUb66CM6BmK3ZZlMbKvAYacLmHb7',
     },
 )

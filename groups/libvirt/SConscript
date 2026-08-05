@@ -1,0 +1,11 @@
+Import('env', 'PackerGroup')
+
+PackerGroup(
+    locals={
+        'environments_dir': '/home/vmutti/projects/AnsibleEnvironments',
+        # Distinguishes the Ansible inventory group naming used by each location's
+        # host packager (e.g. "virtualbox" for Thiala/Ulfgar, "vagrant" for Alanis).
+        'worchestation_group_suffix': 'worchestation_profile_libvirt_guest_${local.distro}',
+
+    },
+)

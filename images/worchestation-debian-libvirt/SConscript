@@ -1,0 +1,14 @@
+Import('env', 'PackerImage')
+
+PackerImage(
+    depends='debian-libvirt',
+    groups=['libvirt'],
+    layers=[
+        'platforms/libvirt-qcow2',
+        'distros/debian',
+        'profiles/worchestation',
+    ],
+    extensions=[
+        '/libvirt/worchestation-debian-libvirt',
+    ],
+)

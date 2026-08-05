@@ -6,11 +6,15 @@ PackerLocation(
         'guest_additions_url': '/usr/share/virtualbox/VBoxGuestAdditions.iso',
         'cpus': 4,
         'memory': 8000,
+        "qemu_binary_source_path": "/usr/bin/qemu-arm-static",
+        "qemu_binary_destination_path": "/usr/bin/qemu-arm-static"
     },
     images=[
         'debian-virtualbox',
         'worchestation-debian-virtualbox',
         'kali-virtualbox',
         'worchestation-kali-virtualbox',
+        'debian-libvirt',
+        'worchestation-debian-libvirt',
     ],
 )

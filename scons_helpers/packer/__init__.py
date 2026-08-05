@@ -276,6 +276,8 @@ def _packer_build_images(env):
     env['ENV']['HOME'] = os.environ['HOME']
     env['ENV']['USER'] = os.environ['USER']
     env['ENV']['LOGNAME'] = os.environ['LOGNAME']
+    if 'SSH_AUTH_SOCK' in os.environ:
+        env['ENV']['SSH_AUTH_SOCK'] = os.environ['SSH_AUTH_SOCK']
 
     image_names = IMAGES.resolve(LOCATIONS[location_name].get('images') or [])
     built = {}

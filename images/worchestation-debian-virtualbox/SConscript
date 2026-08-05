@@ -2,7 +2,7 @@ Import('env', 'PackerImage')
 
 PackerImage(
     depends='debian-virtualbox',
-    groups=['virtualbox', 'worchestation'],
+    groups=['virtualbox', 'vagrant'],
     layers=[
         'platforms/virtualbox-ovf',
         'distros/debian',

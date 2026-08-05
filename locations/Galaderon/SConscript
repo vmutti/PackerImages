@@ -1,0 +1,12 @@
+Import('env', 'PackerLocation')
+
+PackerLocation(
+    locals={
+        'cpus': 4,
+        'memory': 8000,
+    },
+    images=[
+        'debian-libvirt',
+        'worchestation-debian-libvirt',
+    ],
+)

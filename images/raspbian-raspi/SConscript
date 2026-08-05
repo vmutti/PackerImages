@@ -1,0 +1,11 @@
+Import('env', 'PackerImage')
+
+PackerImage(
+    layers=[
+        'platforms/raspi',
+        'distros/raspbian-initial',
+    ],
+    extensions=[
+        '/raspi/output.iso',
+    ],
+)

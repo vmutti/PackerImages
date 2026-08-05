@@ -1,0 +1,19 @@
+Import('env', 'PackerLayer')
+
+PackerLayer(
+    uses=['distros/raspbian', 'defaults/initial'],
+    locals={
+        'iso_url':
+            'https://downloads.raspberrypi.org/raspios_full_armhf/images/raspios_full_armhf-2026-06-19/2026-06-18-raspios-trixie-armhf-full.img.xz',
+        'iso_checksum': 'file:${local.iso_url}.sha256',
+        'iso_checksum_type': 'sha256',
+        'file_target_extension': 'img.xz',
+        "image_build_method": "resize",
+        "image_type": "dos",
+        "image_chroot_env": "PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin",
+
+    },
+    builder={
+
+    },
+)

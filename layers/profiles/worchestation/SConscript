@@ -4,7 +4,7 @@ PackerLayer(
     provisioners=[
         {
             'ansible': {
-                'playbook_file': '../.ansible/collections/ansible_collections/vmutti/worchestation/playbooks/provision.yml',
+                'playbook_file': '../../${local.location}/${local.stage}/.ansible/collections/ansible_collections/vmutti/worchestation/playbooks/provision.yml',
                 'user': '${local.ssh_username}',
                 'host_alias': '${local.location}_${local.stage}_${local.target}',
                 'inventory_directory': '${local.build_directory}',
@@ -12,9 +12,9 @@ PackerLayer(
                     '-e',
                     'target_hosts=${local.location}_${local.stage}_${local.target}',
                     '-i',
-                    '../AnsibleInventoryGlobal/inventory/',
-                    '-i',
                     '../inventory/',
+                    '-i',
+                    '../../${local.location}/${local.stage}/inventory/',
                 ],
                 'inventory_file_template': (
                     '${local.location}_${local.stage}_${local.worchestation_group_suffix}:\n'
@@ -25,7 +25,7 @@ PackerLayer(
                     '      ansible_user: {{.User}}\n'
                 ),
                 'ansible_env_vars': [
-                    'ANSIBLE_CONFIG=../ansible.cfg',
+                    'ANSIBLE_CONFIG=../../${local.location}/${local.stage}/ansible.cfg',
                 ],
                 'use_proxy': False,
             },

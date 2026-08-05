@@ -1,0 +1,12 @@
+Import('env', 'PackerImage')
+
+PackerImage(
+    groups=['libvirt'],
+    layers=[
+        'platforms/libvirt-iso',
+        'distros/debian-initial',
+    ],
+    extensions=[
+        '/libvirt/debian-libvirt',
+    ],
+)
